@@ -33,7 +33,7 @@ function App() {
   const handleDeleteImage = (id) => {
     setResults(results.filter((image) => image.id !== id));
   }
-v 
+
   return (
     <div>
       <Header />
