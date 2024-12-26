@@ -12,6 +12,8 @@ function App() {
 
   const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_KEY;
 
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5050"
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (!UNSPLASH_KEY || UNSPLASH_KEY === '') {
@@ -19,7 +21,7 @@ function App() {
     } else if (word === "") {
       alert("Oops! It looks like you forgot to enter a word. Please type a word to find some amazing images!");
     } else {
-      fetch(`https://api.unsplash.com/photos/random?query=${word}&client_id=${UNSPLASH_KEY}`).then((res) => res.json()).then((data) => {
+      fetch(`${API_URL}/new-image?query=${word}&client_id=${UNSPLASH_KEY}`).then((res) => res.json()).then((data) => {
         console.log(data);
         setResults([{ ...data, title: word }, ...results]);
         setWord("");
